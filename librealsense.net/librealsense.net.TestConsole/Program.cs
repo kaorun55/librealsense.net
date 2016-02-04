@@ -15,7 +15,7 @@ namespace librealsense.net.TestConsole
             var count = NativeMethod.Context.rs_get_device_count(ctx, error);
             Console.WriteLine(count);
 
-            if ( count > 0 ) {
+            /*if ( count > 0 )*/ {
                 var device = NativeMethod.Context.rs_get_device( ctx, 0, error );
                 var deviceName = NativeMethod.Device.rs_get_device_name(device, error);
                 Console.WriteLine( deviceName );

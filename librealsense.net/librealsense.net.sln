@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "librealsense.net", "libreal
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "librealsense.net.TestConsole", "librealsense.net.TestConsole\librealsense.net.TestConsole.csproj", "{4E977AB2-7E66-4767-8971-66DCB1B267C3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "librealsense.net.Test", "librealsense.net.Test\librealsense.net.Test.csproj", "{8A0C026B-2F8C-407F-B8CB-CA19527D6A33}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,14 @@ Global
 		{4E977AB2-7E66-4767-8971-66DCB1B267C3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4E977AB2-7E66-4767-8971-66DCB1B267C3}.Release|x86.ActiveCfg = Release|x86
 		{4E977AB2-7E66-4767-8971-66DCB1B267C3}.Release|x86.Build.0 = Release|x86
+		{8A0C026B-2F8C-407F-B8CB-CA19527D6A33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A0C026B-2F8C-407F-B8CB-CA19527D6A33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A0C026B-2F8C-407F-B8CB-CA19527D6A33}.Debug|x86.ActiveCfg = Debug|x86
+		{8A0C026B-2F8C-407F-B8CB-CA19527D6A33}.Debug|x86.Build.0 = Debug|x86
+		{8A0C026B-2F8C-407F-B8CB-CA19527D6A33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A0C026B-2F8C-407F-B8CB-CA19527D6A33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A0C026B-2F8C-407F-B8CB-CA19527D6A33}.Release|x86.ActiveCfg = Release|Any CPU
+		{8A0C026B-2F8C-407F-B8CB-CA19527D6A33}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
