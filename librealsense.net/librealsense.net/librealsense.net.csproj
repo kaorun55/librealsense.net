@@ -56,7 +56,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Context.cs" />
+    <Compile Include="Device.cs" />
     <Compile Include="DistortionType.cs" />
+    <Compile Include="RealSenseException.cs" />
     <Compile Include="FormatType.cs" />
     <Compile Include="NativeMethod.cs" />
     <Compile Include="OptionType.cs" />

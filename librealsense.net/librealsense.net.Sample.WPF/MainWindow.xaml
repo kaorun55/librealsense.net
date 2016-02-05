@@ -8,6 +8,9 @@
         Loaded="Window_Loaded"
         Title="librealsense.net.Sample.WPF" SizeToContent="WidthAndHeight">
     <Grid>
-        <Image x:Name="ImageColor" Width="640" Height="480"/>
+        <StackPanel Orientation="Vertical">
+            <TextBlock x:Name="TextDeviceName" />
+            <Image x:Name="ImageColor" Width="640" Height="480"/>
+        </StackPanel>
     </Grid>
 </Window>
