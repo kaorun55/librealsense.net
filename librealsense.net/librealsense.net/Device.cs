@@ -52,5 +52,12 @@ namespace librealsense
 
             return data;
         }
+
+        public void Stop()
+        {
+            IntPtr error = IntPtr.Zero;
+            NativeMethod.Device.rs_stop_device( device, out error );
+            RealSenseException.Handle( error );
+        }
     }
 }

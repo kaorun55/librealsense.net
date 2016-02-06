@@ -10,7 +10,11 @@ namespace librealsense
     {
         //static string DllPath = ((IntPtr.Size == 4) ? @"lib\x86\" : @"lib\x64\") + "realsense.dll";
 
-        const string DllPath = @"lib\x86\realsense.dll";
+        // Windows用
+        //const string DllPath = @"lib\x86\realsense.dll";
+
+        // Unity用
+        const string DllPath = @"realsense";
 
         public static class Context
         {
@@ -53,6 +57,10 @@ namespace librealsense
 
             [DllImport( DllPath )]
             public static extern void rs_start_device( IntPtr device, out IntPtr error );
+
+            [DllImport( DllPath )]
+            public static extern void rs_stop_device( IntPtr device, out IntPtr error );
+
 
         }
 

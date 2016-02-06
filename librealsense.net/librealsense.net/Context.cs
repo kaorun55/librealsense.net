@@ -40,5 +40,16 @@ namespace librealsense
 
             return new Device( device );
         }
+
+        public void Close()
+        {
+            if( context != IntPtr.Zero ) {
+                IntPtr error = IntPtr.Zero;
+                NativeMethod.Context.rs_delete_context( context, out error );
+                RealSenseException.Handle( error );
+
+                context = IntPtr.Zero;
+            }
+        }
     }
 }
