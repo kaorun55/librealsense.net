@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace librealsense.net.Sample.WPF
 {
@@ -80,7 +82,15 @@ namespace librealsense.net.Sample.WPF
             device.EnableStream( StreamType.color, PresetType.best_quality );
             device.EnableStream( StreamType.depth, PresetType.best_quality );
             device.EnableStream( StreamType.infrared, PresetType.best_quality );
+            //device.SetOption( OptionType.f200_laser_power, 0 );
             device.StartDevice();
+
+
+            //Extrinsics extrin = new Extrinsics();
+            //device.GetDeviceExtrinsics( StreamType.color, StreamType.depth, ref extrin );
+
+            //Intrinsics intrin = new Intrinsics();
+            //device.GetStreamIntrinsics( StreamType.color, ref intrin );
 
             while ( isContinue ) {
                 device.WaitForFrames();
@@ -91,6 +101,11 @@ namespace librealsense.net.Sample.WPF
                     ImageDepth.Source = CreateBitmapSource( device, StreamType.depth );
                     ImageIr.Source = CreateBitmapSource( device, StreamType.infrared );
                 } ) );
+
+                // スレッドでUI要素を作るとメモリリークするらしい
+                // http://grabacr.net/archives/1851
+                // ↓の行を入れると、なぜかリークしない
+                Trace.WriteLine( string.Format( "Total Memory = {0} KB", GC.GetTotalMemory( true ) / 1024 ) );
             }
 
             device.Stop();

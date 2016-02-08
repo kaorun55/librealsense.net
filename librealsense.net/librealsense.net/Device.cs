@@ -23,6 +23,21 @@ namespace librealsense
             return deviceName;
         }
 
+        public void GetDeviceExtrinsics( StreamType from_stream, StreamType to_stream, ref Extrinsics extrin )
+        {
+            IntPtr error = IntPtr.Zero;
+            NativeMethod.Device.rs_get_device_extrinsics( device, from_stream, to_stream, ref extrin, out error );
+            RealSenseException.Handle( error );
+        }
+
+        public void GetStreamIntrinsics( StreamType stream, ref Intrinsics intrin )
+        {
+            IntPtr error = IntPtr.Zero;
+            NativeMethod.Device.rs_get_stream_intrinsics( device, stream, ref intrin, out error );
+            RealSenseException.Handle( error );
+        }
+
+
         public void EnableStream( StreamType stream, int width, int height, FormatType format, int framerate )
         {
             IntPtr error = IntPtr.Zero;
@@ -40,10 +55,10 @@ namespace librealsense
         public bool IsStreamEnabled( StreamType stream )
         {
             IntPtr error = IntPtr.Zero;
-            var enabled = NativeMethod.Device.rs_is_stream_enabled( device, stream, out error );
+            var value = NativeMethod.Device.rs_is_stream_enabled( device, stream, out error );
             RealSenseException.Handle( error );
 
-            return enabled != 0;
+            return value != 0;
         }
 
         public int GetStreamWidth( StreamType stream )
@@ -101,6 +116,38 @@ namespace librealsense
         {
             IntPtr error = IntPtr.Zero;
             NativeMethod.Device.rs_stop_device( device, out error );
+            RealSenseException.Handle( error );
+        }
+
+        public bool IsSupportsOption( OptionType option )
+        {
+            IntPtr error = IntPtr.Zero;
+            var value = NativeMethod.Device.rs_device_supports_option( device, option, out error );
+            RealSenseException.Handle( error );
+
+            return value != 0;
+        }
+
+        public void GetOptionRange( OptionType option, out double min, out double max, out double step )
+        {
+            IntPtr error = IntPtr.Zero;
+            NativeMethod.Device.rs_get_device_option_range( device, option, out min, out max, out step, out error );
+            RealSenseException.Handle( error );
+        }
+
+        public double GetOption( OptionType option )
+        {
+            IntPtr error = IntPtr.Zero;
+            var value = NativeMethod.Device.rs_get_device_option( device, option, out error );
+            RealSenseException.Handle( error );
+
+            return value;
+        }
+
+        public void SetOption( OptionType option, double value )
+        {
+            IntPtr error = IntPtr.Zero;
+            NativeMethod.Device.rs_set_device_option( device, option, value, out error );
             RealSenseException.Handle( error );
         }
     }

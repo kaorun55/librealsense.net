@@ -77,13 +77,14 @@
     <Compile Include="Context.cs" />
     <Compile Include="Device.cs" />
     <Compile Include="DistortionType.cs" />
+    <Compile Include="Intrinsics.cs" />
     <Compile Include="RealSenseException.cs" />
     <Compile Include="FormatType.cs" />
     <Compile Include="NativeMethod.cs" />
     <Compile Include="OptionType.cs" />
     <Compile Include="PresetType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RsExtrinsics.cs" />
+    <Compile Include="Extrinsics.cs" />
     <Compile Include="StreamType.cs" />
   </ItemGroup>
   <ItemGroup>

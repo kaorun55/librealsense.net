@@ -8,7 +8,7 @@ namespace librealsense
 {
     public static class NativeMethod
     {
-        //static string DllPath = ((IntPtr.Size == 4) ? @"lib\x86\" : @"lib\x64\") + "realsense.dll";
+        //const string DllDir = ((IntPtr.Size == 4) ? @"lib\x86\" : @"lib\x64\") + "realsense.dll";
 
         // Windows用
         const string DllPath = @"lib\x86\realsense.dll";
@@ -45,17 +45,14 @@ namespace librealsense
 
 
             [DllImport( DllPath )]
-            public static extern int rs_device_supports_option(IntPtr device, OptionType option, out IntPtr error);
-
-            [DllImport( DllPath )]
             public static extern int rs_get_stream_mode_count(IntPtr device, StreamType stream, out IntPtr error);
 
             [DllImport( DllPath )]
             public static extern void rs_get_stream_mode(IntPtr device, StreamType stream, int index, out int width, out int height, out FormatType format, out int framerate, out IntPtr error);
 
 
-            //[DllImport( DllPath )]
-            //public static extern void rs_get_device_extrinsics(IntPtr device, StreamType from_stream, StreamType to_stream, out RsExtrinsics extrin, out IntPtr error);
+            [DllImport( DllPath )]
+            public static extern void rs_get_device_extrinsics(IntPtr device, StreamType from_stream, StreamType to_stream, ref Extrinsics extrin, out IntPtr error);
 
             [DllImport( DllPath )]
             public static extern void rs_enable_stream( IntPtr device, StreamType stream, int width, int height, FormatType format, int framerate, out IntPtr error );
@@ -78,8 +75,8 @@ namespace librealsense
             [DllImport( DllPath )]
             public static extern int rs_get_stream_framerate( IntPtr device, StreamType stream, out IntPtr error );
 
-            //[DllImport( DllPath )]
-            //public static extern void rs_get_stream_intrinsics( IntPtr device, StreamType stream, intrinsics* intrin, out IntPtr error);
+            [DllImport( DllPath )]
+            public static extern void rs_get_stream_intrinsics( IntPtr device, StreamType stream, ref Intrinsics intrin, out IntPtr error);
 
 
             [DllImport( DllPath )]
@@ -97,6 +94,9 @@ namespace librealsense
             [DllImport( DllPath )]
             public static extern void rs_stop_device( IntPtr device, out IntPtr error );
 
+
+            [DllImport( DllPath )]
+            public static extern int rs_device_supports_option( IntPtr device, OptionType option, out IntPtr error );
 
             [DllImport( DllPath )]
             public static extern void rs_get_device_option_range( IntPtr device, OptionType option, out double min, out double max, out double step, out IntPtr error );
