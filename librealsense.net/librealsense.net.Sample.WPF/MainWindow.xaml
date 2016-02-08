@@ -20,9 +20,26 @@
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
 
-                <Image Grid.Column="0" Grid.Row="0" x:Name="ImageColor" Width="640" Height="480"/>
-                <Image Grid.Column="1" Grid.Row="0" x:Name="ImageDepth" Width="640" Height="480"/>
-                <Image Grid.Column="0" Grid.Row="1" x:Name="ImageIr" Width="640" Height="480"/>
+                <Image Grid.Column="0" Grid.Row="0" x:Name="ImageColor" Width="640" Height="480" RenderTransformOrigin="0.5,0.5">
+                    <Image.RenderTransform>
+                        <ScaleTransform ScaleX="-1"/>
+                    </Image.RenderTransform>
+                </Image>
+                <Image Grid.Column="1" Grid.Row="0" x:Name="ImageDepth" Width="640" Height="480" RenderTransformOrigin="0.5,0.5">
+                    <Image.RenderTransform>
+                        <ScaleTransform ScaleX="-1"/>
+                    </Image.RenderTransform>
+                </Image>
+                <Image Grid.Column="0" Grid.Row="1" x:Name="ImageIr" Width="640" Height="480" RenderTransformOrigin="0.5,0.5">
+                    <Image.RenderTransform>
+                        <ScaleTransform ScaleX="-1"/>
+                    </Image.RenderTransform>
+                </Image>
+                <Image Grid.Column="1" Grid.Row="1" x:Name="ImageIr2" Width="640" Height="480" RenderTransformOrigin="0.5,0.5">
+                    <Image.RenderTransform>
+                        <ScaleTransform ScaleX="-1"/>
+                    </Image.RenderTransform>
+                </Image>
             </Grid>
         </StackPanel>
     </Grid>

@@ -68,8 +68,6 @@ namespace librealsense.net.Sample.WPF
             var context = Context.Create( 4 );
             int count = context.GetDeviceCount();
             if ( count == 0 ) {
-                // 例外をだす
-                context.GetDevice( 0 );
                 return;
             }
 
