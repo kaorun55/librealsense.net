@@ -41,6 +41,26 @@ namespace librealsense.net.Sample.WPF
             } );
         }
 
+        BitmapSource CreateBitmapSource( Device device, StreamType stream )
+        {
+            var width = device.GetStreamWidth( stream );
+            var height = device.GetStreamHeight( stream );
+            var format = device.GetStreamFormat( stream );
+
+            var pixelFormat = PixelFormats.Rgb24;
+            if ( format == FormatType.y8 ) {
+                pixelFormat = PixelFormats.Gray8;
+            }
+            else if ( format == FormatType.z16 ) {
+                pixelFormat = PixelFormats.Gray16;
+            }
+
+            var bpp = pixelFormat.BitsPerPixel / 8;
+
+            return BitmapSource.Create( width, height, 96, 96, pixelFormat, null,
+                device.GetFrameData( stream ), width * height * bpp, width * bpp );
+        }
+
         private void StartCppApi()
         {
             var context = Context.Create( 4 );
@@ -57,7 +77,9 @@ namespace librealsense.net.Sample.WPF
                 TextDeviceName.Text = device.GetDeviceName();
             } ) );
 
-            device.EnableStream( StreamType.color, 640, 480, FormatType.rgb8, 60 );
+            device.EnableStream( StreamType.color, PresetType.best_quality );
+            device.EnableStream( StreamType.depth, PresetType.best_quality );
+            device.EnableStream( StreamType.infrared, PresetType.best_quality );
             device.StartDevice();
 
             while ( isContinue ) {
@@ -65,12 +87,13 @@ namespace librealsense.net.Sample.WPF
 
                 Dispatcher.BeginInvoke( new Action( () =>
                 {
-                    var ptr = device.GetFrameData( StreamType.color );
-                    int stride = 640 * 3;
-                    int size = stride * 480;
-                    ImageColor.Source = BitmapSource.Create( 640, 480, 96, 96, PixelFormats.Rgb24, null, ptr, size, stride );
+                    ImageColor.Source = CreateBitmapSource( device, StreamType.color );
+                    ImageDepth.Source = CreateBitmapSource( device, StreamType.depth );
+                    ImageIr.Source = CreateBitmapSource( device, StreamType.infrared );
                 } ) );
             }
+
+            device.Stop();
         }
 
         private void StartCApi()

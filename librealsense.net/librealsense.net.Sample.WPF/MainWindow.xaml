@@ -10,7 +10,20 @@
     <Grid>
         <StackPanel Orientation="Vertical">
             <TextBlock x:Name="TextDeviceName" />
-            <Image x:Name="ImageColor" Width="640" Height="480"/>
+            <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+
+                <Image Grid.Column="0" Grid.Row="0" x:Name="ImageColor" Width="640" Height="480"/>
+                <Image Grid.Column="1" Grid.Row="0" x:Name="ImageDepth" Width="640" Height="480"/>
+                <Image Grid.Column="0" Grid.Row="1" x:Name="ImageIr" Width="640" Height="480"/>
+            </Grid>
         </StackPanel>
     </Grid>
 </Window>

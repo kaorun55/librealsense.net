@@ -30,6 +30,50 @@ namespace librealsense
             RealSenseException.Handle( error );
         }
 
+        public void EnableStream( StreamType stream, PresetType preset )
+        {
+            IntPtr error = IntPtr.Zero;
+            NativeMethod.Device.rs_enable_stream_preset( device, stream, preset, out error );
+            RealSenseException.Handle( error );
+        }
+
+        public bool IsStreamEnabled( StreamType stream )
+        {
+            IntPtr error = IntPtr.Zero;
+            var enabled = NativeMethod.Device.rs_is_stream_enabled( device, stream, out error );
+            RealSenseException.Handle( error );
+
+            return enabled != 0;
+        }
+
+        public int GetStreamWidth( StreamType stream )
+        {
+            IntPtr error = IntPtr.Zero;
+            var value = NativeMethod.Device.rs_get_stream_width( device, stream, out error );
+            RealSenseException.Handle( error );
+
+            return value;
+        }
+
+        public int GetStreamHeight( StreamType stream )
+        {
+            IntPtr error = IntPtr.Zero;
+            var value = NativeMethod.Device.rs_get_stream_height( device, stream, out error );
+            RealSenseException.Handle( error );
+
+            return value;
+        }
+
+        public FormatType GetStreamFormat( StreamType stream )
+        {
+            IntPtr error = IntPtr.Zero;
+            var value = NativeMethod.Device.rs_get_stream_format( device, stream, out error );
+            RealSenseException.Handle( error );
+
+            return value;
+        }
+
+
         public void StartDevice()
         {
             IntPtr error = IntPtr.Zero;
@@ -47,7 +91,7 @@ namespace librealsense
         public IntPtr GetFrameData( StreamType stream )
         {
             IntPtr error = IntPtr.Zero;
-            var data = NativeMethod.Device.rs_get_frame_data( device, StreamType.color, out error );
+            var data = NativeMethod.Device.rs_get_frame_data( device, stream, out error );
             RealSenseException.Handle( error );
 
             return data;
