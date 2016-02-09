@@ -80,13 +80,17 @@ namespace librealsense.net.Sample.WPF
             device.EnableStream( StreamType.color, PresetType.best_quality );
             device.EnableStream( StreamType.depth, PresetType.best_quality );
             device.EnableStream( StreamType.infrared, PresetType.best_quality );
+
+            // IRを切る
             //device.SetOption( OptionType.f200_laser_power, 0 );
+
             device.StartDevice();
 
-
+            // 配列をメンバに持つ構造体の受け渡しができない
             //Extrinsics extrin = new Extrinsics();
             //device.GetDeviceExtrinsics( StreamType.color, StreamType.depth, ref extrin );
 
+            // 配列をメンバに持つ構造体の受け渡しができない
             //Intrinsics intrin = new Intrinsics();
             //device.GetStreamIntrinsics( StreamType.color, ref intrin );
 

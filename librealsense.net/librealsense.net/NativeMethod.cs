@@ -10,6 +10,7 @@ namespace librealsense
     {
         //const string DllDir = ((IntPtr.Size == 4) ? @"lib\x86\" : @"lib\x64\") + "realsense.dll";
 
+        // Windows(x86,64)とUnityで参照方法が違うのを何とかしたい
         // Windows用
         const string DllPath = @"lib\x86\realsense.dll";
 
