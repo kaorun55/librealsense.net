@@ -12,10 +12,10 @@ namespace librealsense
 
         // Windows(x86,64)とUnityで参照方法が違うのを何とかしたい
         // Windows用
-        //const string DllPath = @"lib\x86\realsense.dll";
+        const string DllPath = @"lib\x86\realsense.dll";
 
         // Unity用
-        const string DllPath = @"realsense";
+        //const string DllPath = @"realsense";
 
         public static class Context
         {

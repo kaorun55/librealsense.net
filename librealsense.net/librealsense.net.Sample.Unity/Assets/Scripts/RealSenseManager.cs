@@ -37,7 +37,7 @@ public class RealSenseManager : MonoBehaviour
 
     }
 
-    public void OnApplicationQuit()
+    public void OnDestroy()
     {
         //if ( device != null ) {
         //    device.Stop();
@@ -48,5 +48,9 @@ public class RealSenseManager : MonoBehaviour
             context.Close();
             context = null;
         }
+    }
+
+    public void OnApplicationQuit()
+    {
     }
 }
